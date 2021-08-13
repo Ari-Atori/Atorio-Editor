@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\io">
+      <UniqueIdentifier>{4b0791ce-f5a5-4fe5-bf55-28c1bb1d2771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\filter">
+      <UniqueIdentifier>{475d331e-b054-4dc9-af6c-790983d8e68e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\math">
+      <UniqueIdentifier>{3f8b74f8-2e1d-4bfd-8553-0a8a6a3b2067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\project">
+      <UniqueIdentifier>{01f60920-36f3-4190-b93a-e68e48d29a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\video">
+      <UniqueIdentifier>{ddb85b13-be20-40ac-9102-a4b343dc8ddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\wingl">
+      <UniqueIdentifier>{beb8c633-fc2e-414f-ac5a-48bd68b6a3e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\filter">
+      <UniqueIdentifier>{a1c6926e-a9e3-4afc-bf58-6322f0741b81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\io">
+      <UniqueIdentifier>{c42e2ed1-e2c7-4678-908e-76b0adfd9834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\math">
+      <UniqueIdentifier>{9b112838-b9cd-4728-908a-93b8676df3df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\project">
+      <UniqueIdentifier>{a4948980-def1-437a-a38d-a38c97fc0fc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\video">
+      <UniqueIdentifier>{e2eeb114-910f-44a5-b547-ff1ebaadfe78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wingl">
+      <UniqueIdentifier>{cc29e4b1-e2ac-4202-863a-12a0ec55db30}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Packet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="io\JSON_W.cpp">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="math\Matrix.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\Buffer.cpp">
+      <Filter>Source Files\wingl</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\Canvas.cpp">
+      <Filter>Source Files\wingl</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\GLRectangle.cpp">
+      <Filter>Source Files\wingl</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\GLWindow.cpp">
+      <Filter>Source Files\wingl</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\Shader.cpp">
+      <Filter>Source Files\wingl</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\Texture.cpp">
+      <Filter>Source Files\wingl</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\Uniform.cpp">
+      <Filter>Source Files\wingl</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\Window.cpp">
+      <Filter>Source Files\wingl</Filter>
+    </ClCompile>
+    <ClCompile Include="filter\Filter.cpp">
+      <Filter>Source Files\filter</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="System.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="io\JSON_W.hpp">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="math\Complex.hpp">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\Matrix.hpp">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\Quaternion.hpp">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\Vector.hpp">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="wingl\Buffer.hpp">
+      <Filter>Header Files\wingl</Filter>
+    </ClInclude>
+    <ClInclude Include="wingl\Canvas.hpp">
+      <Filter>Header Files\wingl</Filter>
+    </ClInclude>
+    <ClInclude Include="wingl\GLRectangle.hpp">
+      <Filter>Header Files\wingl</Filter>
+    </ClInclude>
+    <ClInclude Include="wingl\GLWindow.hpp">
+      <Filter>Header Files\wingl</Filter>
+    </ClInclude>
+    <ClInclude Include="wingl\Shader.hpp">
+      <Filter>Header Files\wingl</Filter>
+    </ClInclude>
+    <ClInclude Include="wingl\Texture.hpp">
+      <Filter>Header Files\wingl</Filter>
+    </ClInclude>
+    <ClInclude Include="wingl\Window.hpp">
+      <Filter>Header Files\wingl</Filter>
+    </ClInclude>
+    <ClInclude Include="filter\Filter.hpp">
+      <Filter>Header Files\filter</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
