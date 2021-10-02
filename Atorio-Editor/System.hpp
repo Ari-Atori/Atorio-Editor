@@ -3,6 +3,12 @@
 
 #include <string>
 
+/* This class handles all of the basic functionalities that are
+ * essential for starting the application up. Formatted in a way
+ * where different operating system support in the future
+ * would not be as obtuse.
+ */
+
 class System {
 public:
 	static void init();

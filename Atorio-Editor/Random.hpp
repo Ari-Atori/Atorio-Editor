@@ -4,6 +4,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/* Scavanged from an old video game project, this is an example
+ * of a counter based pseudo random number generator (CBPRNG)
+ */
+
 class Random {
 public:
     Random();

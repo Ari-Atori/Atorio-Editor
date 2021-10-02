@@ -3,6 +3,7 @@
 #include <stb/stb_image.h>
 #include <iostream>
 
+/* Grab OpenGL texture given a filename */
 Texture::Texture(const std::string& fileName)
 {
     int width, height, numComponents;
@@ -28,6 +29,7 @@ Texture::~Texture()
     glDeleteTextures(1, &m_texture);
 }
 
+/* Instruct OpenGL to use this texture for rendering */
 void Texture::Bind()
 {
     glBindTexture(GL_TEXTURE_2D, m_texture);

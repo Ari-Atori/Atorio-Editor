@@ -86,6 +86,7 @@ float mat4::det()
 		c[0][1] * c[1][0] * c[2][2] * c[3][3] + c[0][0] * c[1][1] * c[2][2] * c[3][3];
 }
 
+/* I absolutely love this behemoth of a formula */
 mat4 mat4::inverse() {
 	mat4 inv;
 

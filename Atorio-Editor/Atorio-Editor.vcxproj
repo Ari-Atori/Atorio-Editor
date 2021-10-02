@@ -153,7 +153,6 @@
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="wingl\Buffer.cpp" />
-    <ClCompile Include="wingl\Canvas.cpp" />
     <ClCompile Include="wingl\GLRectangle.cpp" />
     <ClCompile Include="wingl\GLWindow.cpp" />
     <ClCompile Include="wingl\Shader.cpp" />
@@ -174,7 +173,6 @@
     <ClInclude Include="System.hpp" />
     <ClInclude Include="Time.hpp" />
     <ClInclude Include="wingl\Buffer.hpp" />
-    <ClInclude Include="wingl\Canvas.hpp" />
     <ClInclude Include="wingl\GLRectangle.hpp" />
     <ClInclude Include="wingl\GLWindow.hpp" />
     <ClInclude Include="wingl\Shader.hpp" />

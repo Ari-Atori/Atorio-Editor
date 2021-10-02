@@ -4,6 +4,8 @@
 #include <SDL2/SDL.h>
 #include <string>
 
+/* This will be the hidden window for exporting reasons. */
+
 class GLWindow {
 public:
 	GLWindow(int, int, std::string);

@@ -1,8 +1,10 @@
 #include "Packet.hpp"
 #include <SDL2/SDL.h>
 
+/* Default null index incase of index failure */
 Packet null = { "", 0, 0, {0} };
 
+/* Grab packet given index */
 Packet& Packet::operator[](const char* name) {
 	Packet* list = (Packet*)value.v;
 	for (uint32_t i = 0; i < count; ++i)
@@ -11,6 +13,7 @@ Packet& Packet::operator[](const char* name) {
 	return null;
 }
 
+/* Grab macro given list of approved types */
 static int get_type(std::string type) {
 	if (type == "float") return PACKET_FLOAT;
 	if (type == "vec2") return PACKET_VEC2;
@@ -23,6 +26,7 @@ static int get_type(std::string type) {
 	else return PACKET_PACKET;
 }
 
+/* Create a packet tree given JSON object */
 Packet* Packet::json(JSON json) {
 	Packet* root = new Packet;
 	strcpy_s(root->name, 32, "/");
@@ -31,7 +35,7 @@ Packet* Packet::json(JSON json) {
 	Packet* children = new Packet[3];
 	root->value.v = children;
 	
-	//TODO create interface material here
+	/* TODO: create user interface material here */
 	strcpy_s(children[0].name, 32, "content");
 	children[0].type = PACKET_PACKET;
 	children[0].count = 0;
@@ -76,6 +80,7 @@ Packet* Packet::json(JSON json) {
 	return root;
 }
 
+/* Copy the tree structure of another packet */
 static void recurse_copy(Packet* dest, Packet* src) {
 	strcpy_s(dest->name, 32, src->name);
 	dest->count = src->count;
@@ -87,16 +92,17 @@ static void recurse_copy(Packet* dest, Packet* src) {
 		for (int i = 0; i < dest->count; ++i)
 			recurse_copy(&pot[i], &pin[i]);
 	}
-	//TODO have the code deal with arrays
+	/*TODO: have the code deal with arrays */
 }
 
-//Does not copy values, as the thing copied would be the template
+/* Does not copy values, as the thing copied would be the template */
 Packet* Packet::copy(Packet* src) {
 	Packet* root = new Packet;
 	recurse_copy(root, src);
 	return root;
 }
 
+/* Clean and recurisvley delete the packet tree */
 void Packet::clean(Packet* pck) {
 	if (pck->type != PACKET_PACKET)
 		return;
@@ -104,5 +110,5 @@ void Packet::clean(Packet* pck) {
 	for (int i = 0; i < pck->count; ++i)
 		clean(&pck[i]);
 	delete pck->value.v;
-	//TODO have the code deal with arrays
+	/* TODO: have the code deal with arrays */
 }

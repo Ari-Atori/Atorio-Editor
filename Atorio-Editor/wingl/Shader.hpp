@@ -8,15 +8,18 @@
 #include <map>
 #include <GL/glew.h>
 
-//These must comply with Packet.hpp macros; TODO change to one set of tools
-#define UNIFORM_VEC1F 1
+/* Shader is the class which loads the shader file, compiles it, initializes the
+ * main attributes, creates the uniforms, assigns them values, and binds the shader.
+ */
+
+/* TODO: Rely strictly on macros defined in Packet.hpp instead */
+#define UNIFORM_FLOAT 1
 #define UNIFORM_VEC2F 2
 #define UNIFORM_VEC3F 3
 #define UNIFORM_VEC4F 4
-#define UNIFORM_MAT2F 0x22
-#define UNIFORM_MAT3F 0x23
 #define UNIFORM_MAT4F 5
 
+/* Uniform class is an object of Shader which nicely wraps up uniform data processing. */
 class Uniform {
 public:
 	Uniform();

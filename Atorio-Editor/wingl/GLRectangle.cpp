@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 
+/* Create a regular rectangle that spans the whole OpenGL plane */
 GLRectangle::GLRectangle() {
 	vec4 pos[4] = { {-1, 1, 0, 1}, { 1, 1, 0, 1}, { 1,-1, 0, 1}, {-1,-1, 0, 1} };
 

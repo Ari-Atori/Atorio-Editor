@@ -8,15 +8,13 @@ std::vector<Window*> Window::list;
 Window::Window(int width, int height, std::string title) {
 	window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL | SDL_WINDOW_INPUT_FOCUS);
 	context = SDL_GL_CreateContext(window);
+	
 	//Image icon("icon.png");
 	//SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(icon.data, 32, 32, 32, 128, 0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
-
-	// The icon is attached to the window pointer
 	//SDL_SetWindowIcon(window, surface);
-
-	// ...and the surface containing the icon pixel data is no longer required.
 	//SDL_FreeSurface(surface);
 	
+	/* Update the list of windows the poller has to check */
 	list.push_back(this);
 
 	closed = hidden = maximized = false;
@@ -28,6 +26,7 @@ Window::~Window() {
 	list.erase(std::remove(list.begin(), list.end(), this), list.end());
 }
 
+/* Grab list of all events, then update each window individually */
 void Window::update() {
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {

@@ -5,6 +5,11 @@
 #include <string>
 #include <vector>
 
+/* Here is the wrapper class for SDL Window with OpenGL context
+ * While incomplete as of now, functionalities will be slowly put in.
+ */
+
+
 class KeyboardMouse {
 public:
 	KeyboardMouse() {

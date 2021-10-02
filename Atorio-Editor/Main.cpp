@@ -11,20 +11,20 @@
 #include "filter/Filter.hpp"
 #include <pfd/pfd.hpp>
 
-/*
-M4 ortho(int W, int H, int x, int y, int w, int h) {
-	M4 m = M4_IDENTITY;
-	m.c[0][0] = (float)w / W;
-	m.c[1][1] = (float)h / H;
-	m.c[0][3] = 2.0F * (0.5F * w + x) / W - 1.0F;
-	m.c[1][3] = -(2.0F * (0.5F * h + y) / H - 1.0F);
+
+mat4 ortho(int W, int H, int x, int y, int w, int h) {
+	mat4 m = MAT4_IDENTITY;
+	m(0,0) = (float)w / W;
+	m(1,1) = (float)h / H;
+	m(3,0) = 2.0F * (0.5F * w + x) / W - 1.0F;
+	m(3,1) = -(2.0F * (0.5F * h + y) / H - 1.0F);
 	return m;
 }
-*/
+
 
 int main(int c, char** v) {
 	System::init();
-	Window window(960, 640, "Atorio Editor");
+	Window window(863, 393, "Atorio Editor");
 	System::glew();
 	GLRectangle rect;
 	rect.bind();
@@ -35,7 +35,7 @@ int main(int c, char** v) {
 	image.Bind();
 
 	FilterDLL dll("Atorio-Filters");
-	Filter* filter = dll.get("video-contrast");
+	Filter* filter = dll.get("video-colorblindness");
 	if (!filter)
 		SDL_Log("Filter could not be loaded...\n");
 	Packet* packet = filter->copy();
@@ -49,8 +49,8 @@ int main(int c, char** v) {
 		window.clear();
 		filter->bind(); image.Bind();
 
-		(*packet)["in"]["contrast"].value.f = 0.75;
-		(*packet)["in"]["pivot"].value.f = 0.5;
+		(*packet)["in"]["severity"].value.f = 1.0;
+		(*packet)["in"]["colorblindness"].value.i32 = 1;
 
 		filter->compute(packet);
 

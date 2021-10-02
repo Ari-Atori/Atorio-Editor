@@ -4,8 +4,11 @@
 #include <string>
 #include <GL/glew.h>
 
-class Texture
-{
+/* Textures represent a way to pass an image
+ * to OpenGL for rendering purposes
+ */
+
+class Texture {
 public:
 	Texture(const std::string& fileName);
 

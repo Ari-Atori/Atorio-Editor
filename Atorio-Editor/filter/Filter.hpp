@@ -9,6 +9,12 @@
 #include "../wingl/Shader.hpp"
 #include <windows.h>
 
+/* Filters here refer to the audio and video effects that the editor will load.
+ * The filters are defined and stored in the DLL and the dll locates for the editor
+ * the configuration file and shader for each filter available. The audio file will
+ * be part of the DLL directly and not of any shader code.
+ */
+
 #define FILTER_CONFIG	0
 #define FILTER_OPENGL	1
 #define FILTER_LAYER	2

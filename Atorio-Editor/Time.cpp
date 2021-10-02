@@ -4,22 +4,22 @@
 #include <chrono>
 
 Time::Time() {
-	using time_stamp = std::chrono::time_point<std::chrono::system_clock, std::chrono::microseconds>;
-	time_stamp ts = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now());
-	unix_utime = ts.time_since_epoch().count();
-	ymdhmsu();
+	update();
 }
 
+/* Give time in seconds */
 Time::Time(long long time) {
 	unix_utime = time * 1000000;
 	ymdhmsu();
 }
 
+/* Give time in seconds and microseconds */
 Time::Time(long long time, long utime) {
 	unix_utime = time * 1000000 + utime;
 	ymdhmsu();
 }
 
+/* Get time and calculate day/month/year as well as weekday */
 void Time::update() {
 		using time_stamp = std::chrono::time_point<std::chrono::system_clock, std::chrono::microseconds>;
 		time_stamp ts = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now());
@@ -27,6 +27,7 @@ void Time::update() {
 		ymdhmsu();
 }
 
+/* TODO: Complete the specification for this code, let alone complete it */
 std::string Time::format(std::string form) {
 	return std::to_string(month) + "/" + std::to_string(day) + "/" + std::to_string(year);
 }
@@ -58,6 +59,7 @@ static int getMonth(uint64_t* days, int year) {
 	return month + 1;
 }
 
+/* Calculates the rest of the data info given the time in microseconds */
 void Time::ymdhmsu() {
 	uint64_t tmp = unix_utime;
 

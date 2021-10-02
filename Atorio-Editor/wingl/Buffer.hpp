@@ -15,7 +15,7 @@
  * we want to be real-time in this program, we only have 16666
  * microseconds to complete each frame in a 60 FPS video. Our
  * solution is to use render and frame buffers throughout the whole
- * drawing process. as that will keep all memories in the GPU,
+ * drawing process, as that will keep all memories in the GPU,
  * minimizing memory transfers and maximizing drawing speeds.
  */
 

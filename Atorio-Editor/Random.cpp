@@ -17,7 +17,7 @@ Random::Random(uint64_t seed, uint64_t step) {
     this->step = step;
 }
 
-
+/* I have no recollection of this algorithm. The constants show that my goals are beyond my own understanding */
 static inline uint64_t inline_random(uint64_t seed, uint64_t count) {
     uint64_t marx = count;
     marx *= 0x2DEADBEA7DADD1E5; marx += seed; marx = ((marx >> 32) | (marx << 32)); marx ^= 0x0F1E2D3C4B5A6978;

@@ -3,6 +3,10 @@
 
 #include <GL/glew.h>
 
+/* GLRectangle will represent the most simple rectangle we can have:
+ * One with coordinated which span the entire screen. This proves to
+ * be somewhat useful. */
+
 class GLRectangle {
 public:
     GLRectangle();

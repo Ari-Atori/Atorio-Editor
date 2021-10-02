@@ -7,6 +7,14 @@
 #include "math/Matrix.hpp"
 #include "io/JSON_W.hpp"
 
+/* Here is the core object for communication between
+ * the main editor, and the filter libraries. The data
+ * the packets share are actually agreed before-hand
+ * when the editor reads the dll and the json configuration
+ * files associated with each filter. The types cooincide with
+ * Shader.hpp to insure smooth unifrom loading from ouptuts
+ */
+
 #define PACKET_PACKET 0
 #define PACKET_FLOAT 1
 #define PACKET_VEC2 2

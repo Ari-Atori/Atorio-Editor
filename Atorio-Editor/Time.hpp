@@ -4,6 +4,11 @@
 #include <stdint.h>
 #include <string>
 
+/* This is mainly a wrapper class for keeping time, because
+ * of the different calls and so forth, I simply created this
+ * to handle it all for me.
+ */
+
 class Time {
 public:
 	Time();

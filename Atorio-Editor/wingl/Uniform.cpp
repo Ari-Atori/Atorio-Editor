@@ -34,9 +34,10 @@ Uniform::Uniform(GLuint p, std::string n, int t, int c) {
 
 Uniform::~Uniform() {}
 
+/* Insert data into repected OpenGL functions given data type */
 void Uniform::set(void* D) {
 	switch (type) {
-	case UNIFORM_VEC1F:
+	case UNIFORM_FLOAT:
 		glUniform1fv(location, count, (const GLfloat*) D);
 		break;
 	case UNIFORM_VEC2F:
@@ -48,15 +49,8 @@ void Uniform::set(void* D) {
 	case UNIFORM_VEC4F:
 		glUniform4fv(location, count, (const GLfloat*) D);
 		break;
-	case UNIFORM_MAT2F:
-		glUniformMatrix2fv(location, count, GL_TRUE, (const GLfloat*) D);
-		break;
-	case UNIFORM_MAT3F:
-		glUniformMatrix3fv(location, count, GL_TRUE, (const GLfloat*) D);
-		break;
 	case UNIFORM_MAT4F:
-		glUniformMatrix4fv(location, count, GL_TRUE, (const GLfloat*) D);
+		glUniformMatrix4fv(location, count, GL_TRUE, (const GLfloat*) D); /* Gotta transpose */
 		break;
 	}
-
 }

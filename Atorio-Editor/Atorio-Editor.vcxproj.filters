@@ -78,9 +78,6 @@
     <ClCompile Include="wingl\Buffer.cpp">
       <Filter>Source Files\wingl</Filter>
     </ClCompile>
-    <ClCompile Include="wingl\Canvas.cpp">
-      <Filter>Source Files\wingl</Filter>
-    </ClCompile>
     <ClCompile Include="wingl\GLRectangle.cpp">
       <Filter>Source Files\wingl</Filter>
     </ClCompile>
@@ -135,9 +132,6 @@
       <Filter>Header Files\math</Filter>
     </ClInclude>
     <ClInclude Include="wingl\Buffer.hpp">
-      <Filter>Header Files\wingl</Filter>
-    </ClInclude>
-    <ClInclude Include="wingl\Canvas.hpp">
       <Filter>Header Files\wingl</Filter>
     </ClInclude>
     <ClInclude Include="wingl\GLRectangle.hpp">
