@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <string>
 #include <vector>
+#include "comp/Component.hpp"
 
 /* Here is the wrapper class for SDL Window with OpenGL context
  * While incomplete as of now, functionalities will be slowly put in.
@@ -30,6 +31,8 @@ public:
 	static void update();
 	
 	void clear();
+	void addComponent(Component* comp);
+	void draw();
 	void update_local();
 	void swap();
 	void current();
@@ -60,6 +63,7 @@ private:
 	SDL_Window* window;
 	SDL_GLContext context;
 	std::vector<SDL_Event> events;
+	std::vector<Component*> comps;
 	static std::vector<Window*> list;
 };
 

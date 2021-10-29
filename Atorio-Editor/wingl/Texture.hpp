@@ -11,7 +11,9 @@
 class Texture {
 public:
 	Texture(const std::string& fileName);
+	Texture(uint32_t color);
 
+	void update(int width, int height, uint32_t *pixels);
 	void Bind();
 
 	virtual ~Texture();

@@ -56,9 +56,9 @@ Filter::Filter(std::string name, HINSTANCE dll) {
 
 	std::string str = config["code"];
 	fn = (function)GetProcAddress(dll, str.c_str());
-	if (!fn) { std::cout << "could not locate the function: " << name << std::endl; return; }
+	if (!fn) { SDL_Log("Could not locate the function: %s\n", name.c_str()); return; }
 	tmplt = Packet::json(config);
-
+	SDL_Log("%p\n", tmplt);
 	shader->bind();
 	Packet* p = (Packet*) (*tmplt)["out"].value.v;
 	for (int i = 0; i < (*tmplt)["out"].count; ++i)

@@ -1,0 +1,6 @@
+#ifndef ATORIO_IO_VIDEOSOURCE
+#define ATORIO_IO_VIDEOSOURCE
+
+
+
+#endif

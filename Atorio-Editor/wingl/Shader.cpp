@@ -13,9 +13,11 @@ static void check(GLuint shader, GLuint flag, int isProgram, const char* errmsg)
 	else
 		glGetShaderiv(shader, flag, &success);
 
-	if (success == GL_FALSE)
+	if (success == GL_FALSE) {
 		if (isProgram)
 			glGetProgramInfoLog(shader, sizeof(error), NULL, error); else glGetShaderInfoLog(shader, sizeof(error), NULL, error);
+		SDL_Log("ERROR: %s\n", error);
+	}
 }
 
 /* Load an entire shader source file */
@@ -31,7 +33,7 @@ static std::string load(const std::string& fn) {
 			getline(file, line);
 			output.append(line + "\n");
 		}
-	else { std::cerr << "Unable to load shader: " << fn << std::endl; }
+	else { SDL_Log("Unable to load shader: %s\n", fn.c_str()); }
 
 	return output;
 }

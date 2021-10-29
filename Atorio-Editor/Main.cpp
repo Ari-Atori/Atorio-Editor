@@ -10,6 +10,10 @@
 #include "Packet.hpp"
 #include "filter/Filter.hpp"
 #include <pfd/pfd.hpp>
+#include <SDL2/SDL.h>
+#include <windows.h>
+#include "project/AudioTrack.hpp"
+#include "wingl/comp/GLPanel.hpp"
 
 
 mat4 ortho(int W, int H, int x, int y, int w, int h) {
@@ -21,24 +25,43 @@ mat4 ortho(int W, int H, int x, int y, int w, int h) {
 	return m;
 }
 
-
 int main(int c, char** v) {
 	System::init();
-	Window window(863, 393, "Atorio Editor");
+	Window window(1080, 720, "Atorio Editor");
 	System::glew();
-	GLRectangle rect;
-	rect.bind();
 
-	std::vector<std::string> res = pfd::open_file::open_file("Open Image", System::home(), { "Image Files", "*.png *.jpg *.jpeg *.bmp" }).result();
+	GLPanel* panel = new GLPanel(1080, 720, 0, 0, 540, 360, System::parpexec() + "shaders/default", 0xFF808080);
+	Button* button1 = new Button(32, 32, 0, 0, 24, 24, System::parpexec() + "icons/buttons/new.png");
+	Button* button2 = new Button(122, 32, 0, 0, 24, 24, System::parpexec() + "icons/buttons/save.png");
 
-	Texture image(res[0]);
-	image.Bind();
+	window.addComponent(panel);
+	panel->addComponent(button1);
+	panel->addComponent(button2);
+	//GLRectangle rect;
+	//rect.bind();
 
-	FilterDLL dll("Atorio-Filters");
-	Filter* filter = dll.get("video-colorblindness");
-	if (!filter)
-		SDL_Log("Filter could not be loaded...\n");
-	Packet* packet = filter->copy();
+	//std::vector<std::string> res = pfd::open_file::open_file("Open Image", System::home(), { "Image Files", "*.png *.jpg *.jpeg *.bmp" }).result();
+	//std::vector<std::string> music = pfd::open_file::open_file("Open Music File", System::home(), { "Music Files", "*.mp3 *.wav *.ogg *.wma" }).result();
+	//std::vector<std::string> song = pfd::open_file::open_file("Open Music File", System::home(), { "Music Files", "*.mp3 *.wav *.ogg *.wma" }).result();
+
+	//Texture image(res[0]);
+	//image.Bind();
+
+	//AudioTrack a(music[0]);
+	//a.play();
+	//AudioTrack b(song[0]);
+	//b.play();
+
+	//SDL_PauseAudioDevice(System::dev44100, 0);
+
+	//FilterDLL dll("Atorio-Filters");
+
+	//Filter* filter = dll.get("video-transform");
+
+	//if (!filter)
+		//SDL_Log("Filter could not be loaded...\n");
+
+	//Packet* packet = filter->copy();
 
 	Core::running = true;
 	std::thread t1(Core::tick);
@@ -46,21 +69,27 @@ int main(int c, char** v) {
 
 	while (Window::windows() > 0) {
 		window.current();
-		window.clear();
+		window.draw();
+		/*
 		filter->bind(); image.Bind();
 
-		(*packet)["in"]["severity"].value.f = 1.0;
-		(*packet)["in"]["colorblindness"].value.i32 = 1;
+		(*packet)["in"]["sx"].value.f = 1.0;
+		(*packet)["in"]["sy"].value.f = 1.0;
+		(*packet)["in"]["kx"].value.f = 0.0;
+		(*packet)["in"]["ky"].value.f = 0.0;
+		(*packet)["in"]["r"].value.f  = 90.0;
+		(*packet)["in"]["tx"].value.f = 0.0;
+		(*packet)["in"]["ty"].value.f = 0.0;
 
 		filter->compute(packet);
-
-		rect.draw();
+		*/
+		//rect.draw();
 		window.swap();
 		Window::update();
 	}
 	Core::running = false;
 	t1.join();
 	t2.join();
-	delete packet;
+	//delete packet;
 	return System::exit(0);
 }

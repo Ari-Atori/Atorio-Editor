@@ -49,6 +49,12 @@
     <Filter Include="Header Files\wingl">
       <UniqueIdentifier>{cc29e4b1-e2ac-4202-863a-12a0ec55db30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\wingl\comp">
+      <UniqueIdentifier>{01385671-0d87-4fb4-a631-d108cda0f9da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wingl\comp">
+      <UniqueIdentifier>{a9b89e21-7b00-4a54-890d-b5cb499c869e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -98,6 +104,24 @@
     </ClCompile>
     <ClCompile Include="filter\Filter.cpp">
       <Filter>Source Files\filter</Filter>
+    </ClCompile>
+    <ClCompile Include="io\AudioSource.cpp">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="project\AudioTrack.cpp">
+      <Filter>Source Files\project</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\comp\Component.cpp">
+      <Filter>Source Files\wingl\comp</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\comp\GLPanel.hpp">
+      <Filter>Header Files\wingl\comp</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\comp\GLPanel.cpp">
+      <Filter>Source Files\wingl\comp</Filter>
+    </ClCompile>
+    <ClCompile Include="wingl\comp\Button.cpp">
+      <Filter>Source Files\wingl\comp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +175,30 @@
     </ClInclude>
     <ClInclude Include="filter\Filter.hpp">
       <Filter>Header Files\filter</Filter>
+    </ClInclude>
+    <ClInclude Include="io\AudioSource.hpp">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="project\AudioTrack.hpp">
+      <Filter>Header Files\project</Filter>
+    </ClInclude>
+    <ClInclude Include="io\wav.cpp">
+      <Filter>Source Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="io\Music.hpp">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="io\VideoSource.hpp">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="io\VideoTrack.hpp">
+      <Filter>Header Files\project</Filter>
+    </ClInclude>
+    <ClInclude Include="wingl\comp\Component.hpp">
+      <Filter>Header Files\wingl\comp</Filter>
+    </ClInclude>
+    <ClInclude Include="wingl\comp\Button.hpp">
+      <Filter>Header Files\wingl\comp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

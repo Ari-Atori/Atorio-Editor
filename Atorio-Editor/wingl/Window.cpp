@@ -6,7 +6,7 @@
 std::vector<Window*> Window::list;
 
 Window::Window(int width, int height, std::string title) {
-	window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL | SDL_WINDOW_INPUT_FOCUS);
+	window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL | SDL_WINDOW_INPUT_FOCUS);
 	context = SDL_GL_CreateContext(window);
 	
 	//Image icon("icon.png");
@@ -24,6 +24,8 @@ Window::Window(int width, int height, std::string title) {
 Window::~Window() {
 	SDL_DestroyWindow(window);
 	list.erase(std::remove(list.begin(), list.end(), this), list.end());
+	for (Component *c : comps)
+		delete c;
 }
 
 /* Grab list of all events, then update each window individually */
@@ -123,6 +125,16 @@ void Window::update_local() {
 void Window::clear() {
 	glClearColor(0, 0, 0, 0);
 	glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void Window::addComponent(Component* comp) {
+	comps.push_back(comp);
+}
+void Window::draw() {
+	glClearColor(0, 0, 0, 0);
+	glClear(GL_COLOR_BUFFER_BIT);
+	for (Component* c : comps)
+		c->draw(NULL, 0, 0);
 }
 
 void Window::swap() {
