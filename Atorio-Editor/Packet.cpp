@@ -1,5 +1,4 @@
 #include "Packet.hpp"
-#include <SDL2/SDL.h>
 
 /* Default null index incase of index failure */
 Packet null = { "", 0, 0, {0} };

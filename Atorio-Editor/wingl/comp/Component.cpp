@@ -1,38 +1,38 @@
 #include "Component.hpp"
-
-#define COMP_POS_START	0
-#define COMP_POS_CENTER 1
-#define COMP_POS_END	2
-
-Component::Component(int x, int y, int rx, int ry, int w, int h) {
-	rect = { x, y, w, h };
-	pixels = new uint32_t[w * h];
-	changed = false;
-}
+#include "../Window.hpp"
+#include <iostream>
 
 Component::~Component() {
-	if (pixels) delete[] pixels;
-	for (Component* c : comps)
-		delete c;
+	for (Component *c : components) delete c;
 }
 
-void Component::copy(uint32_t* src, uint32_t* dest, int W, int H, SDL_Rect r) {
-	int x0 = r.x < 0 ? 0 : r.x, y0 = r.y < 0 ? 0 : r.y;
-	int x1 = (r.x + r.w) > W ? W : (r.x + r.w), y1 = (r.y + r.h) > H ? H : (r.y + r.h);
-	int width = x1 - x0, height = y1 - y0;
+void Component::addc(Component* c) {
+	components.push_back(c);
+}
 
-	SDL_Log("(%d %d) - (%d %d) = (%d %d)\n", x1, y1, x0, y0, width, height);
+void Component::remc(Component* c) {
+	components.erase(std::remove(components.begin(), components.end(), c), components.end());
+}
 
-	if (width < 0)
+void Component::draw(Box& window, Box& parent) {
+	if (!style.display)
 		return;
-	for (int y = 0; y < height; y++)
-		memcpy(&dest[(y + y0) * W + x0], &src[y * r.w + (x0 - r.x)], sizeof(uint32_t) * width);
-}
 
-bool Component::draw(uint32_t* window, int w, int h) {
-	for (Component *c : comps)
-		c->draw(pixels, rect.w, rect.h);
-	if (window)
-		copy(pixels, window, w, h, rect);
-	return false;
+	uni.compute(&box, window, parent, style);
+
+	vec4 transparent = { 0, 0, 0, 0 };
+	if (style.background.image || style.background.color != transparent) {
+		if (style.background.image) style.background.image->Bind();
+		Window::ui->setUniform("p2Gm", &uni.p2Gm);
+		Window::ui->setUniform("p2Gb", &uni.p2Gb);
+		Window::ui->setUniform("bgcolor", &uni.background);
+		Window::ui->setUniform("center", &uni.center);
+		Window::ui->setUniform("upperright", &uni.upperright);
+		Window::ui->setUniform("border_radius", &uni.border_radius);
+		Window::ui->setUniform("usestexture", &uni.sampling);
+		Window::rect->draw();
+	}
+	for (Component* c : components)
+		c->draw(window, box);
+
 }

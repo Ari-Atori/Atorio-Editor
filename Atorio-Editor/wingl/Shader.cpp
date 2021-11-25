@@ -1,5 +1,4 @@
 #include "Shader.hpp"
-#include <SDL2/SDL.h>
 #include <iostream>
 #include <fstream>
 
@@ -16,7 +15,7 @@ static void check(GLuint shader, GLuint flag, int isProgram, const char* errmsg)
 	if (success == GL_FALSE) {
 		if (isProgram)
 			glGetProgramInfoLog(shader, sizeof(error), NULL, error); else glGetShaderInfoLog(shader, sizeof(error), NULL, error);
-		SDL_Log("ERROR: %s\n", error);
+		std::cout << "ERROR: " << error << "\n";
 	}
 }
 
@@ -33,7 +32,7 @@ static std::string load(const std::string& fn) {
 			getline(file, line);
 			output.append(line + "\n");
 		}
-	else { SDL_Log("Unable to load shader: %s\n", fn.c_str()); }
+	else { std::cout << "ERROR: UNABLE TO LOAD " << fn << "\n"; }
 
 	return output;
 }

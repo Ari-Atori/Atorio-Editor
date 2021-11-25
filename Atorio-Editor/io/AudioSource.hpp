@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include <stdint.h>
-#include <SDL2/SDL.h>
 
 class AudioSource {
 public:

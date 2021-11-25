@@ -57,9 +57,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -105,23 +102,14 @@
     <ClCompile Include="filter\Filter.cpp">
       <Filter>Source Files\filter</Filter>
     </ClCompile>
-    <ClCompile Include="io\AudioSource.cpp">
-      <Filter>Source Files\io</Filter>
-    </ClCompile>
-    <ClCompile Include="project\AudioTrack.cpp">
-      <Filter>Source Files\project</Filter>
+    <ClCompile Include="wingl\Style.cpp">
+      <Filter>Source Files\wingl</Filter>
     </ClCompile>
     <ClCompile Include="wingl\comp\Component.cpp">
       <Filter>Source Files\wingl\comp</Filter>
     </ClCompile>
-    <ClCompile Include="wingl\comp\GLPanel.hpp">
-      <Filter>Header Files\wingl\comp</Filter>
-    </ClCompile>
-    <ClCompile Include="wingl\comp\GLPanel.cpp">
-      <Filter>Source Files\wingl\comp</Filter>
-    </ClCompile>
-    <ClCompile Include="wingl\comp\Button.cpp">
-      <Filter>Source Files\wingl\comp</Filter>
+    <ClCompile Include="wingl\Text.cpp">
+      <Filter>Source Files\wingl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -182,9 +170,6 @@
     <ClInclude Include="project\AudioTrack.hpp">
       <Filter>Header Files\project</Filter>
     </ClInclude>
-    <ClInclude Include="io\wav.cpp">
-      <Filter>Source Files\io</Filter>
-    </ClInclude>
     <ClInclude Include="io\Music.hpp">
       <Filter>Header Files\io</Filter>
     </ClInclude>
@@ -194,11 +179,14 @@
     <ClInclude Include="io\VideoTrack.hpp">
       <Filter>Header Files\project</Filter>
     </ClInclude>
+    <ClInclude Include="wingl\Style.hpp">
+      <Filter>Header Files\wingl</Filter>
+    </ClInclude>
     <ClInclude Include="wingl\comp\Component.hpp">
       <Filter>Header Files\wingl\comp</Filter>
     </ClInclude>
-    <ClInclude Include="wingl\comp\Button.hpp">
-      <Filter>Header Files\wingl\comp</Filter>
+    <ClInclude Include="wingl\Text.hpp">
+      <Filter>Header Files\wingl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

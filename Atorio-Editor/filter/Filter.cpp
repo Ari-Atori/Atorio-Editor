@@ -1,6 +1,5 @@
 #include "Filter.hpp"
 #include "../System.hpp"
-#include <SDL2/SDL.h>
 #include <iostream>
 #include <vector>
 
@@ -9,11 +8,11 @@ FilterDLL::FilterDLL(std::string fname) {
 	std::string path = System::home() + "AppData/Local/Atorio/filters/" + fname + ".dll";
 	/* Grab DLL functions */
 	dll = LoadLibraryA(path.c_str());
-	if (!dll) { SDL_Log("could not load the dynamic library, %s\n", path.c_str());  return; }
+	if (!dll) { return; }
 	/* Wacky string in the end helps with the signature of the functions, do not delete, or you will be */
 	function fn = (function)GetProcAddress(dll, "?get_filters@@YAX_KPEAX@Z");
 	if (!fn) {
-		SDL_Log("could not load the listing function\n");  return;
+		return;
 	}
 	char* c = NULL;
 	size_t n = 0;
@@ -42,7 +41,6 @@ Filter* FilterDLL::get(std::string name) {
 Filter::Filter(std::string name, HINSTANCE dll) {
 	this->name = name;
 	std::string path = System::home() + "AppData/Local/Atorio/filters/" + name + "/";
-	SDL_Log("%s\n", path.c_str());
 	config = JSON_IO::load(path + "config.json");
 
 	/* TODO: support dynamic listing of shaders
@@ -56,9 +54,8 @@ Filter::Filter(std::string name, HINSTANCE dll) {
 
 	std::string str = config["code"];
 	fn = (function)GetProcAddress(dll, str.c_str());
-	if (!fn) { SDL_Log("Could not locate the function: %s\n", name.c_str()); return; }
+	if (!fn) { return; }
 	tmplt = Packet::json(config);
-	SDL_Log("%p\n", tmplt);
 	shader->bind();
 	Packet* p = (Packet*) (*tmplt)["out"].value.v;
 	for (int i = 0; i < (*tmplt)["out"].count; ++i)

@@ -25,6 +25,7 @@ public:
     uint64_t next();
     float nextFloat();
     int intRange(int min, int max);
+    float floatRange(float min, float max, uint64_t step);
 private:
     uint64_t seed, step;
 };

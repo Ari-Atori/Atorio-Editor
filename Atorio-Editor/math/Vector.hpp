@@ -8,6 +8,9 @@ public:
 	vec2 operator = (vec2 const &v) {this->x = v.x; this->y = v.y; return *this;}
 	vec2 operator - () { return {-x, -y}; }
 
+	bool operator ==(vec2 const& v) { return this->x == v.x && this->y == v.y; }
+	bool operator !=(vec2 const& v) { return this->x != v.x || this->y != v.y; }
+
 	vec2 operator + (vec2 const &v) { return {x+v.x, y+v.y}; }
 	vec2 operator - (vec2 const &v) { return {x-v.x, y-v.y}; }
 	vec2 operator * (vec2 const &v) { return {x*v.x, y*v.y}; }
@@ -45,6 +48,9 @@ public:
 	vec3 operator = (vec3 const &v) {this->x = v.x; this->y = v.y; this->z = v.z; return *this;}
 	vec3 operator - () { return {-x, -y, -z}; }
 
+	bool operator ==(vec3 const& v) { return this->x == v.x && this->y == v.y && this->z == v.z; }
+	bool operator !=(vec3 const& v) { return this->x != v.x || this->y != v.y || this->z != v.z; }
+
 	vec3 operator + (vec3 const &v) { return {x+v.x, y+v.y, z+v.z}; }
 	vec3 operator - (vec3 const &v) { return {x-v.x, y-v.y, z-v.z}; }
 	vec3 operator * (vec3 const &v) { return {x*v.x, y*v.y, z*v.z}; }
@@ -81,6 +87,9 @@ class vec4 {
 public:
 	vec4 operator = (vec4 const &v) {this->x = v.x; this->y = v.y; this->z = v.z; this->w = v.w; return *this;}
 	vec4 operator - () { return {-x, -y, -z, -w}; }
+
+	bool operator ==(vec4 const& v) { return this->x == v.x && this->y == v.y && this->z == v.z && this->w == v.w; }
+	bool operator !=(vec4 const& v) { return this->x != v.x || this->y != v.y || this->z != v.z || this->w != v.w; }
 
 	vec4 operator + (vec4 const &v) { return {x+v.x, y+v.y, z+v.z, w+v.w}; }
 	vec4 operator - (vec4 const &v) { return {x-v.x, y-v.y, z-v.z, w-v.w}; }

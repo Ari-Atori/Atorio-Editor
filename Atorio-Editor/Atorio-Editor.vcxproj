@@ -138,30 +138,26 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)libs\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype.lib;glfw3.lib;glew32.lib;glew32s.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Core.cpp" />
     <ClCompile Include="filter\Filter.cpp" />
-    <ClCompile Include="io\AudioSource.cpp" />
     <ClCompile Include="io\JSON_W.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
     <ClCompile Include="Packet.cpp" />
-    <ClCompile Include="project\AudioTrack.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="wingl\Buffer.cpp" />
-    <ClCompile Include="wingl\comp\Button.cpp" />
     <ClCompile Include="wingl\comp\Component.cpp" />
-    <ClCompile Include="wingl\comp\GLPanel.cpp" />
-    <ClCompile Include="wingl\comp\GLPanel.hpp" />
     <ClCompile Include="wingl\GLRectangle.cpp" />
     <ClCompile Include="wingl\GLWindow.cpp" />
     <ClCompile Include="wingl\Shader.cpp" />
+    <ClCompile Include="wingl\Style.cpp" />
+    <ClCompile Include="wingl\Text.cpp" />
     <ClCompile Include="wingl\Texture.cpp" />
     <ClCompile Include="wingl\Uniform.cpp" />
     <ClCompile Include="wingl\Window.cpp" />
@@ -174,7 +170,6 @@
     <ClInclude Include="io\Music.hpp" />
     <ClInclude Include="io\VideoSource.hpp" />
     <ClInclude Include="io\VideoTrack.hpp" />
-    <ClInclude Include="io\wav.cpp" />
     <ClInclude Include="math\Complex.hpp" />
     <ClInclude Include="math\Matrix.hpp" />
     <ClInclude Include="math\Quaternion.hpp" />
@@ -185,11 +180,12 @@
     <ClInclude Include="System.hpp" />
     <ClInclude Include="Time.hpp" />
     <ClInclude Include="wingl\Buffer.hpp" />
-    <ClInclude Include="wingl\comp\Button.hpp" />
     <ClInclude Include="wingl\comp\Component.hpp" />
     <ClInclude Include="wingl\GLRectangle.hpp" />
     <ClInclude Include="wingl\GLWindow.hpp" />
     <ClInclude Include="wingl\Shader.hpp" />
+    <ClInclude Include="wingl\Style.hpp" />
+    <ClInclude Include="wingl\Text.hpp" />
     <ClInclude Include="wingl\Texture.hpp" />
     <ClInclude Include="wingl\Window.hpp" />
   </ItemGroup>

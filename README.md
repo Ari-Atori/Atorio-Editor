@@ -13,7 +13,7 @@ This is pretty much a video editor made out of spite. This codebase is split int
 | [OpenGL Extension Wrangler](https://github.com/nigels-com/glew) | [Modified BSD License](http://glew.sourceforge.net/glew.txt), [Mesa 3-D License](http://glew.sourceforge.net/mesa.txt), [Khronos License](http://glew.sourceforge.net/khronos.txt), [GNU GPL](http://glew.sourceforge.net/gpl.txt) |
 | [nlohmann/json](https://github.com/nlohmann/json) | [MIT](https://github.com/nlohmann/json/blob/develop/LICENSE.MIT) |
 | [samhocevar/portable-file-dialogs](https://github.com/samhocevar/portable-file-dialogs/) | [WTFPL License](https://github.com/samhocevar/portable-file-dialogs/blob/master/COPYING) |
-| [Simple Directmedia Layer](https://www.libsdl.org/download-2.0.php) | [zlib license](https://www.libsdl.org/license.php) |
+| [Graphics Library Framework](https://www.glfw.org/download.html) | [zlib/libpng license](https://www.glfw.org/license) |
 | [nothings/stb](https://github.com/nothings/stb) | [MIT or Public Domain](https://github.com/nothings/stb/blob/master/LICENSE) |
 
 ## Licensing

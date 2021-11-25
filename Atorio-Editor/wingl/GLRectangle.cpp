@@ -1,7 +1,6 @@
 #include "GLRectangle.hpp"
 #include "../math/Vector.hpp"
 #include <stdio.h>
-#include <SDL2/SDL.h>
 
 /* Create a regular rectangle that spans the whole OpenGL plane */
 GLRectangle::GLRectangle() {

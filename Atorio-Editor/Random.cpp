@@ -54,3 +54,7 @@ float Random::nextFloat() {
 int Random::intRange(int min, int max) {
     return (((unsigned int) next()) % (max - min + 1)) + min;
 }
+
+float Random::floatRange(float min, float max, uint64_t step) {
+    return nextFloat() * (max - min) + min;
+}

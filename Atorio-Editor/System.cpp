@@ -1,57 +1,62 @@
 
 #include "System.hpp"
-#include "project/AudioTrack.hpp"
-#include <SDL2/SDL.h>
+#include <iostream>
 #include <GL/glew.h>
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
 
 #include <windows.h>
 #include <userenv.h>
 #include <libloaderapi.h>
+#include "wingl/Window.hpp"
+#include "wingl/Text.hpp"
 
-SDL_AudioSpec System::want, System::have44100, System::have48000;
-SDL_AudioDeviceID System::dev44100, System::dev48000;
+Shader *Window::ui;
+GLRectangle* Window::rect;
+FT_Library Text::ft;
+
 
 /* Initialize SDL and other basic elements */
 void System::init() {
-	SDL_Init(SDL_INIT_EVERYTHING);
+	if (!glfwInit()) {
+		std::cout << "GLFW FAILED\n";
+		exit(EXIT_FAILURE);
+	}
+	glfwSetErrorCallback(System::error);
+	FT_Init_FreeType(&Text::ft);
+}
 
-	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
-	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
-	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
-	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
-	
-	SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
-	
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-	want.freq = 44100;
-	want.format = AUDIO_S16;
-	want.channels = 2;
-	want.samples = 4096;
-	want.callback = AudioTrack::audio44100;
-	dev44100 = SDL_OpenAudioDevice(NULL, 0, &want, &have44100, SDL_AUDIO_ALLOW_FREQUENCY_CHANGE);
-	want.freq = 48000;
-	want.callback = AudioTrack::audio48000;
-	dev48000 = SDL_OpenAudioDevice(NULL, 0, &want, &have48000, SDL_AUDIO_ALLOW_FREQUENCY_CHANGE);
+/* GLFW error callback handler */
+void System::error(int code, const char* description) {
+	std::cout << "Error " << code << ": " << description << "\n";
 }
 
 /* Initialize GLEW */
 void System::glew() {
 	GLenum status = glewInit();
-	if (status != GLEW_OK) {
-		SDL_Log("glewInit failed to initialize");
-		exit(-1);
-	}
+	if (status != GLEW_OK) exit(-1);
 	glEnable(GL_FRAMEBUFFER_SRGB);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	Window::ui = new Shader(System::parpexec() + "shaders/ui", std::vector<std::string> {"position", "texture"});
+	Window::ui->bindUniform("p2Gm", UNIFORM_VEC2F, 1);
+	Window::ui->bindUniform("p2Gb", UNIFORM_VEC2F, 1);
+	Window::ui->bindUniform("bgcolor", UNIFORM_VEC4F, 1);
+	Window::ui->bindUniform("center", UNIFORM_VEC2F, 1);
+	Window::ui->bindUniform("border_radius", UNIFORM_VEC2F, 1);
+	Window::ui->bindUniform("upperright", UNIFORM_VEC2F, 1);
+	Window::ui->bindUniform("usestexture", UNIFORM_FLOAT, 1);
+
+	Window::rect = new GLRectangle();
 }
 
-/* Call this to quit all resources properly */
+/* Call this to quit and release all resources properly */
 int System::exit(int status) {
-	SDL_CloseAudioDevice(dev44100);
-	SDL_CloseAudioDevice(dev48000);
-	SDL_Quit();
+	delete Window::ui;
+	delete Window::rect;
+	glfwTerminate();
+	FT_Done_Library(Text::ft);
 	return status;
 }
 
