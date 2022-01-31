@@ -54,6 +54,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -144,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="filter\Filter.cpp" />
+    <ClCompile Include="Hardware.cpp" />
     <ClCompile Include="io\JSON_W.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
@@ -163,19 +165,20 @@
     <ClCompile Include="wingl\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Builtins.hpp" />
     <ClInclude Include="Core.hpp" />
     <ClInclude Include="filter\Filter.hpp" />
+    <ClInclude Include="Hardware.hpp" />
     <ClInclude Include="io\AudioSource.hpp" />
     <ClInclude Include="io\JSON_W.hpp" />
     <ClInclude Include="io\Music.hpp" />
     <ClInclude Include="io\VideoSource.hpp" />
-    <ClInclude Include="io\VideoTrack.hpp" />
     <ClInclude Include="math\Complex.hpp" />
     <ClInclude Include="math\Matrix.hpp" />
     <ClInclude Include="math\Quaternion.hpp" />
     <ClInclude Include="math\Vector.hpp" />
     <ClInclude Include="Packet.hpp" />
-    <ClInclude Include="project\AudioTrack.hpp" />
+    <ClInclude Include="project\Resource.hpp" />
     <ClInclude Include="Random.hpp" />
     <ClInclude Include="System.hpp" />
     <ClInclude Include="Time.hpp" />
@@ -189,7 +192,13 @@
     <ClInclude Include="wingl\Texture.hpp" />
     <ClInclude Include="wingl\Window.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <MASM Include="Builtins.asm">
+      <FileType>Document</FileType>
+    </MASM>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
   </ImportGroup>
 </Project>
