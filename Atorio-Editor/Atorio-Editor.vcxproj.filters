@@ -114,6 +114,9 @@
     <ClCompile Include="Hardware.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="project\Resource.cpp">
+      <Filter>Source Files\project</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.hpp">

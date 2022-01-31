@@ -9,26 +9,24 @@ public:
 	Resource(std::string filename);
 	virtual ~Resource();
 
-	void get_frame(int vtrack, int frames, void** images);
-	void get_audio(int atrack, int frames, float *audio);
+	void getFrame(int vtrack, float stime, float duration, void **images);
+	void getAudio(int atrack, float stime, float duration, float *audio);
+
+	void frame(int vtrack, int sframe, int frames, void** images);
+	void audio(int atrack, int start, int samples, void* sound);
 private:
 	FILE* file;
-	struct {
-		double spped;
-		bool pitch_compensation;
-		double duration;
-	};
 	struct video_props {
-		double speed;
+		float speed;
 		int width, height;
-		double fps;
+		float fps;
 		int format;
 		int colorspace;
-		int wr, hr;
-
+		float aspect;
 	} *v_configs;
 	struct audio_props {
-		double props;
+		float hertz;
+		int format;
 	} *a_configs;
 };
 
